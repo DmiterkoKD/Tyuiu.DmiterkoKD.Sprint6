@@ -45,12 +45,14 @@
             // 
             // textBoxI_DKD
             // 
+            textBoxI_DKD.BackColor = SystemColors.InactiveCaption;
             textBoxI_DKD.Location = new Point(577, 415);
             textBoxI_DKD.Name = "textBoxI_DKD";
             textBoxI_DKD.Size = new Size(168, 23);
             textBoxI_DKD.TabIndex = 11;
             textBoxI_DKD.Text = "Выполнить";
-            textBoxI_DKD.MouseEnter += button_Click;
+            textBoxI_DKD.Enter += button_Click;
+            textBoxI_DKD.KeyPress += textBoxVarXC_ReyPress;
             // 
             // textBoxV_DKD
             // 
