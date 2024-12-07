@@ -51,8 +51,6 @@
             textBoxI_DKD.Size = new Size(168, 23);
             textBoxI_DKD.TabIndex = 11;
             textBoxI_DKD.Text = "Выполнить";
-            textBoxI_DKD.Enter += button_Click;
-            textBoxI_DKD.KeyPress += textBoxVarXC_ReyPress;
             // 
             // textBoxV_DKD
             // 
@@ -135,7 +133,6 @@
             textBoxRes_DKD.TabIndex = 9;
             textBoxRes_DKD.Enter += button_Click;
             textBoxRes_DKD.KeyPress += textBoxVarXC_ReyPress;
-            textBoxRes_DKD.MouseEnter += textBox1_TextChanged_1;
             // 
             // textBoxXX_DKD
             // 

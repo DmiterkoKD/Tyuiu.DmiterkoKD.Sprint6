@@ -27,10 +27,5 @@ namespace Tyuiu.DmiterkoKD.Sprint6.Task0.V28
             }
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
