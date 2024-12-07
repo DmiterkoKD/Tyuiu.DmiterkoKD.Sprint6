@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             textBoxY_DKD = new TextBox();
             textBoxYY_DKD = new TextBox();
             textBoxV_DKD = new TextBox();
@@ -38,6 +39,8 @@
             textBoxX2_DKD = new TextBox();
             textBoxI_DKD = new TextBox();
             I_DKD = new TextBox();
+            errorProvider1 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // textBoxY_DKD
@@ -128,11 +131,15 @@
             // 
             // I_DKD
             // 
-            I_DKD.Location = new Point(486, 27);
+            I_DKD.Location = new Point(487, 37);
             I_DKD.Multiline = true;
             I_DKD.Name = "I_DKD";
             I_DKD.Size = new Size(288, 384);
             I_DKD.TabIndex = 9;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // FormMain
             // 
@@ -151,8 +158,7 @@
             Controls.Add(textBoxY_DKD);
             Name = "FormMain";
             Text = "Спринт 6 | Таск1 | Вариант 29 | Дмитерко К.Д.";
-            KeyPress += textBoxVarXC_ReyPress;
-            MouseEnter += buttonDone_Click;
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -169,5 +175,6 @@
         private TextBox textBoxX2_DKD;
         private TextBox textBoxI_DKD;
         private TextBox I_DKD;
+        private ErrorProvider errorProvider1;
     }
 }
