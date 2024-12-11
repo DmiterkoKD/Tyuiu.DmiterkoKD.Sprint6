@@ -41,7 +41,7 @@ namespace Tyuiu.DmiterkoKD.Sprint6.Task4.V25
         }
         private void buttonHelp(object sender, EventArgs e)
         {
-            MessageBox.Show("Таск 2 выполнил студент группы ИБКСб-24-1 Дмитерко Кира Дмитриевна", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Таск 4 выполнил студент группы ИБКСб-24-1 Дмитерко Кира Дмитриевна", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
