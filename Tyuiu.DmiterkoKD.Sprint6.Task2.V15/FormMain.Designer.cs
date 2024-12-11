@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             textBoxY_DKD = new TextBox();
             textBoxYY_DKD = new TextBox();
             textBoxV_DKD = new TextBox();
@@ -45,8 +46,10 @@
             chartFun = new System.Windows.Forms.DataVisualization.Charting.Chart();
             buttonDun_DKD = new Button();
             Help_DKD = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartFun).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // textBoxY_DKD
@@ -185,11 +188,23 @@
             Help_DKD.UseVisualStyleBackColor = false;
             Help_DKD.Click += buttonHelp;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(50, 112);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(253, 57);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 14;
+            pictureBox1.TabStop = false;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(937, 450);
+            Controls.Add(pictureBox1);
             Controls.Add(Help_DKD);
             Controls.Add(buttonDun_DKD);
             Controls.Add(chartFun);
@@ -206,6 +221,7 @@
             Text = "Спринт 6 | Таск 2 | Вариант 15 | Дмитерко К.Д.";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)chartFun).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -226,5 +242,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartFun;
         private Button buttonDun_DKD;
         private Button Help_DKD;
+        private PictureBox pictureBox1;
     }
 }
