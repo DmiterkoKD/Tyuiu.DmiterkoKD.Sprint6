@@ -120,8 +120,9 @@
             // textBoxRes_DKD
             // 
             textBoxRes_DKD.Location = new Point(360, 74);
+            textBoxRes_DKD.Multiline = true;
             textBoxRes_DKD.Name = "textBoxRes_DKD";
-            textBoxRes_DKD.Size = new Size(363, 23);
+            textBoxRes_DKD.Size = new Size(363, 210);
             textBoxRes_DKD.TabIndex = 7;
             // 
             // button1
