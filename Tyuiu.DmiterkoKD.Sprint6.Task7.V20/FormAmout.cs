@@ -16,5 +16,9 @@ namespace Tyuiu.DmiterkoKD.Sprint6.Task7.V20
         {
             InitializeComponent();
         }
+        private void button_OK(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

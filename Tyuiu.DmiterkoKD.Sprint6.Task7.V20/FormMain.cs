@@ -7,29 +7,110 @@ namespace Tyuiu.DmiterkoKD.Sprint6.Task7.V20
         public FormMain()
         {
             InitializeComponent();
+            openFileDialog1.Filter = "Значения разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            saveFileDialog1.Filter = "Значения разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
         }
-        string openFilePath;
+        static int rows;
+        static int cols;
+        static string openFilePath;
         DataService ds = new DataService();
-
-        private void ButtonDone_Click(object sender, EventArgs e)
+        public static int[,] LoadFromFileData(string filePath)
         {
-            TextBoxOutput_NVR.Text = ds.CollectTextFromFile(openFilePath);
+            string fileData = File.ReadAllText(filePath);
+            fileData = fileData.Replace('\n', '\r');
+            string[] lines = fileData.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+            rows = lines.Length;
+            cols = lines[0].Split(';').Length;
+            int[,] arr = new int[rows, cols];
+
+            for (int r = 0; r < rows; r++)
+            {
+                string[] line_r = lines[r].Split(';');
+                for (int c = 0; c < cols; c++)
+                {
+                    arr[r,c] = Convert.ToInt32(line_r[c]);
+                }
+            }
+            return arr;
         }
-
-        private void ButtonInfo_Click(object sender, EventArgs e)
+        private void buttonOpenFile_Click(object sender, EventArgs e)
         {
-            FormAbout formAbout = new FormAbout();
-            formAbout.ShowDialog();
+            openFileDialog1.ShowDialog();
+            openFilePath = openFileDialog1.FileName;
+
+            int[,] arr= new int[rows, cols];
+            arr = LoadFromFileData(openFilePath);
+
+            dataIn_DKD.ColumnCount = cols;
+            dataIn_DKD.RowCount = rows;
+            dataOut_DKD.ColumnCount = cols;
+            dataOut_DKD.RowCount = rows;
+
+            for (int i = 0; i < cols; i++)
+            {
+                dataIn_DKD.Columns[i].Width = 30;
+                dataOut_DKD.Columns[i].Width = 30;
+            }
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols; c++)
+                {
+                    dataIn_DKD.Rows[r].Cells[c].Value = arr[r, c];
+                }
+            }
+            arr = ds.GetMatrix(openFilePath);
+            buttonDune_DKD.Enabled = true;
         }
-
-        private void ButtonOpen_Click(object sender, EventArgs e)
+        private void buttonHelp_Click(object sender, EventArgs e)
         {
-            OpenFileDialog_NVR.ShowDialog();
-            openFilePath = OpenFileDialog_NVR.FileName;
-            TextBoxInput_NVR.Text = File.ReadAllText(openFilePath);
-            GroupBoxOutput_NVR.Text = GroupBoxOutput_NVR.Text + " " + OpenFileDialog_NVR.FileName;
-            ButtonDone_NVR.Enabled = true;
-
+            FormAmout f = new FormAmout();
+            f.ShowDialog();
+        }
+        private void buttonDone_Click(object sender, EventArgs e)
+        {
+            int[,] arr = new int[rows, cols];
+            arr = ds.GetMatrix(openFilePath);
+            for (int r = 0; r < rows; r++)
+            {
+                for(int c = 0;c < cols; c++)
+                {
+                    dataOut_DKD.Rows[r].Cells[c].Value = arr[r,c];
+                }
+            }
+            Save_DKD.Enabled = true;
+        }
+        private void buttonsave(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName = "OutPutTask7.csv";
+            saveFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
+            saveFileDialog1.ShowDialog();
+            string p = saveFileDialog1.FileName;
+            FileInfo f = new FileInfo(p);
+            bool fileExe = f.Exists;
+            if (fileExe)
+            {
+                File.Delete(p);
+            }
+            int rows = dataOut_DKD.RowCount;
+            int cols = dataIn_DKD.ColumnCount;
+            string str = "";
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (j != cols - 1)
+                    {
+                        str = str + dataOut_DKD.Rows[i].Cells[j].Value + ";";
+                    }
+                    else
+                    {
+                        str = str + dataOut_DKD.Rows[i].Cells[j].Value;
+                    }
+                }
+            }
+            File.AppendAllText(p, str + Environment.NewLine);
+            str = "";
         }
     }
 }

@@ -1,3 +1,4 @@
+﻿using System.IO;
 using Tyuiu.DmiterkoKD.Sprint6.Task6.V10.Lib;
 namespace Tyuiu.DmiterkoKD.Sprint6.Task6.V10
 {
@@ -29,6 +30,27 @@ namespace Tyuiu.DmiterkoKD.Sprint6.Task6.V10
             Res_DKD.Text = Res_DKD.Text + " " + openFileDialogTask_DKD.FileName;
             Go_DKD.Enabled = true;
         }
+        private void buttonOpenFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
 
+            if (openFileDialogTask_DKD.ShowDialog() == DialogResult.OK)
+            {
+                p = openFileDialogTask_DKD.FileName;
+                In_DKD.Text = File.ReadAllText(p);
+                Go_DKD.Enabled = true;
+            }
+        }
+
+        private void buttonComplete_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                MessageBox.Show("Ñíà÷àëà âûáåðèòå ôàéë!");
+                return;
+            }
+            string result = ds.CollectTextFromFile(path);
+            textBoxOut.Text = result;
+        }
     }
 }
