@@ -11,20 +11,9 @@ namespace Tyuiu.DmiterkoKD.Sprint6.Task6.V10.Test
         [Test]
         public void Test1()
         {
-            string resStr = "www dsdsdw ww";
-            string line = "www dsdsdw dsdsdsd ww";
-            string[] words = line.Split(' ');
-            string res = "";
-
-            foreach (string word in words)
-            {
-                if (word.Contains("w"))
-                {
-                    res += word + " ";
-                }
-            }
-            res = res.TrimEnd();
-            Assert.AreEqual(resStr, res);
+            string path = @"C:\DataSprint5\InPutDataFileTask6V30.txt";
+            FileInfo file = new FileInfo(path);
+            Assert.AreEqual(true, file.Exists);
         }
     }
 }

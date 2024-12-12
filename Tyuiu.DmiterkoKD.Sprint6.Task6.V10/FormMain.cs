@@ -12,7 +12,7 @@ namespace Tyuiu.DmiterkoKD.Sprint6.Task6.V10
         private void buttonDone_Click(object sender, EventArgs e)
         {
             string str = "w";
-            Res_DKD.Text = ds.CollectTextFromFile(str, openFilePath);
+            Res_DKD.Text = ds.CollectTextFromFile(str);
         }
         private void buttonHelp_ISI_Click(object sender, EventArgs e)
         {

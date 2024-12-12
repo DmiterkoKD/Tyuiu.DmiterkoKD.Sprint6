@@ -5,24 +5,22 @@ namespace Tyuiu.DmiterkoKD.Sprint6.Task6.V10.Lib
     {
         public string CollectTextFromFile(string path)
         {
+            string[] lines = File.ReadAllLines(path);
             string result = "";
-            using (StreamReader reader = new StreamReader(path))
+
+            foreach (string line in lines)
             {
-                string? line;
-                string[] fragments;
+                string[] words = line.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
-
-                while ((line = reader.ReadLine()) != null)
+                foreach (string word in words)
                 {
-                    fragments = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-
-                    result += fragments.Length >= 4 ? fragments[3] + " " : "";
+                    if (word.Contains("w"))
+                    {
+                        result += word + " ";
+                    }
                 }
             }
-
-            result = result.Trim();
-            return result;
+            return result.Trim();
         }
     }
 }
